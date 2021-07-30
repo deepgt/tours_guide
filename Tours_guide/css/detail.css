@@ -1,0 +1,24 @@
+.mySlides {height:400px; display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
+
+.detail_body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text_body_container{
+    height: 100vh;
+}
+.detail_slide{
+    background-color: #0f2525;
+    width: 100%;
+}
+.detail_text{
+    margin-left: 23%;
+}
+.showmapbutton{
+    margin-left: 23%; 
+}
