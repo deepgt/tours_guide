@@ -510,7 +510,8 @@ iframe {
 }
 
 .Loginerror{
-  margin-left: 50px;
+  width: 100%;
+  border-radius: 40px;
 }
 
 @media (max-width: 992px) {

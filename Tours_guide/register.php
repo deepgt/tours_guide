@@ -155,11 +155,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</span>
 					</div>
 
-                    <?php 
-                    if(!empty($login_err)){
-                        echo '<div class="Loginerror alert alert-danger ">' . $username_err . '</div>';
-                    }        
-                    ?>
+                    <?php  
+                            if(!empty($username_err)){
+                                echo '<div class="Loginerror alert alert-danger ">' . $username_err . '</div>';
+                            } 
+                            if(!empty($password_err)){
+                                echo '<div class="Loginerror alert alert-danger ">' . $password_err . '</div>';
+                            }
+                            if(!empty($confirm_password_err)){
+                                echo '<div class="Loginerror alert alert-danger ">' . $confirm_password_err . '</div>';
+                            }         
+                        ?>
 
 					<div class="container-login100-form-btn p-t-10">
 						<button class="login100-form-btn">
