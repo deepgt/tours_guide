@@ -58,22 +58,105 @@ function get_lng(){
 
 ?>
 
-<div class="mapbody"> 
+<style>
+    .geocoder {
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        left: 50%;
+        margin-left: -25%;
+        top: 70px;
+    }
+    .mapboxgl-ctrl-geocoder {
+        min-width: 100%;
+    }
+    .mapboxgl-ctrl-geocoder input[type="text"] {
+        margin: 0 0 0 20px;
+    }
     
-    <div class="sidebar">
-         <div id="geocoder" class="geocoder"></div>
-        <div class="heading">
-            <h4>Our locations</h4>
-        </div>
-        <div id="listings" class="listings"></div>
-        </div>
-        
+
+    #floatingmenu {
+        width:30%;
+        height: 100%;
+        position:absolute;
+        left:-30%;
+        z-index:4;
+        background:#000;
+        -webkit-transition: all 700ms ease;
+        -moz-transition: all 700ms ease;
+        -ms-transition: all 700ms ease;
+        -o-transition: all 700ms ease;
+        transition: all 700ms ease;
+        background-color:white;
+}
+
+    #floatingmenu:hover {
+        width: 30%;
+        left: 0%;
+        -webkit-transition: all 700ms ease;
+        -moz-transition: all 700ms ease;
+        -ms-transition: all 700ms ease;
+        -o-transition: all 700ms ease;
+        transition: all 700ms ease;
+    } 
+
+    .container_floatingmenu{
+        display:flex;
+
+    }
+    .icon{
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        background: white;
+        border-radius: 0 30px 34px 0;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    }
+
+    .icon .fa{
+        font-size:50px
+    }
+</style>
+ 
+
+
+<div class="mapbody">
+    <div class="map_body_top">
         <div id="map" class="map"></div>
+        <div id="geocoder" class="geocoder"></div>
     </div>
+            <div id="floatingmenu">
+                <div class="container_floatingmenu"> 
+                     <div class="sidebar">
+                        <div class="heading">
+                            <h4>locations</h4>
+                        </div>      
+                        <div id="listings" class="listings"></div>
+                        <div class="icon"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+    </div>
+
+
+        
+    <!-- <div class="detail_location">
+        <div id="listings" class="listings"></div>
+    </div>     -->
+    <!-- </div> -->
 </div>
 
 <script>
-    
+            
+            //FILTERS RESET
+    $('.magic-button').click(function(event) {
+    event.preventDefault;
+        $('.magic-content').toggleClass('on');
+    });
+
     var lat;
     var log;
 
@@ -98,6 +181,14 @@ function get_lng(){
         center: [85.314087, 27.700125],
         zoom: 10
     });
+
+    // Add the control to the map.
+    var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+    });
+ 
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
     // initialize the map canvas to interact with later
     var canvas = map.getCanvasContainer();
@@ -141,15 +232,6 @@ function get_lng(){
         */
         buildLocationList(stores);
         addMarkers();
- 
-        // Add the control to the map.
-        map.addControl(
-        new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-        })
-        );
- 
 
         // Initialize the geolocate control.
         var geolocate = new mapboxgl.GeolocateControl({
@@ -302,12 +384,7 @@ function addMarkers() {
     * 2. Close all other popups and display popup for clicked store
     * 3. Highlight listing in sidebar (and remove highlight for all other listings)
     **/
-    el.addEventListener('click', function (e) {
-        /* Fly to the point */
-        flyToStore(marker);
-
-        // fitmap(marker);
-        /* Close all other popups and display popup for clicked store */
+    el.addEventListener('mouseenter', function (e) {
         createPopUp(marker);
         /* Highlight listing in sidebar */
         var activeItem = document.getElementsByClassName('active');
@@ -320,6 +397,12 @@ function addMarkers() {
         );
         listing.classList.add('active');
         });
+
+        
+        el.addEventListener('click', function (e) {
+            fitmap(marker);
+            getRoute(marker.geometry.coordinates);
+            });
 });
 }
  
@@ -412,6 +495,7 @@ function createPopUp(currentFeature) {
         .setHTML('<h3>'+ currentFeature.properties.name +'</h3>' +'<h4>' +currentFeature.properties.description +'</h4>')
         .addTo(map);
     }
+
 </script>
 
 <?php include 'footer.php' ?>

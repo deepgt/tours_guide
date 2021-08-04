@@ -57,10 +57,21 @@ type="text/css"
         <a href="category.php"><div class="logo"><img src="images/logo_mapbox_project.png" alt="logo"></div></a>
         <div class="exit-intent-popup">
             <div class="newsletter">
-                <b style="padding: 10px">was our site helpful, please review us? 📬</b>
-                <p style="padding: 10px">Rate us!</p>
-                <input style="padding: 15px" type="text" placeholder="your comment" class="email" id="comment" />
-                <button style="margin-top: 15px" class="submit" onclick='sentmail(<?php echo(json_encode($_SESSION["username"])) ?>)'>submit</button>
+                <h2>your input is valuable to us</h2>
+                <p>would you mind taking a moment to please share us your feedback?</p>
+                <!-- <input style="padding: 15px" type="text" placeholder="your comment" class="email" id="comment" /> -->
+                <div class="form__group field">
+                    <input type="text" class="email form__field" placeholder="comment" name="comment" id='comment' required />
+                <label for="name" class="form__label">Comment</label>
+                </div>
+                <div class="bottom_button">
+                        
+                            <a href="#" class="btn btn-white btn-animation-1" onclick="exit()">cancel</a>
+                    
+                            <a href="#" class="btn btn-white btn-animation-1" onclick='sentmail(<?php echo(json_encode($_SESSION["username"])) ?>)'>submit</a> 
+                
+                        <!-- <button class="btn btn-white btn-animation-1" onclick='sentmail(<?php echo(json_encode($_SESSION["username"])) ?>)'>submit</button> -->
+                </div>
                 <div onclick="exit()" style="cursor: pointer" class="close">x</div>
             </div>
             <div style="cursor: pointer" class="skipnlogout"><a href="logout.php">skip and logout >>></a></div>
@@ -68,7 +79,7 @@ type="text/css"
 
         <div onclick="popup()" class="logoutbutton">
             <ul class="navbar" style="cursor: pointer" >
-                <li><a>Logout</a></li>
+            <a href="#" class="btn btn-white btn-animation-1" onclick="exit()"><li>logout</li></a>
             </ul>
         </div> 
         

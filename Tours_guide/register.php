@@ -12,9 +12,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } else{
+    } 
+    // elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
+    //     $username_err = "Username can only contain letters, numbers, and underscores.";
+    // }
+    elseif(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', trim($_POST["username"]))){
+        $username_err = "Username must contain minimum eight characters, at least one uppercase letter, one lowercase letter and one number.";
+    } 
+    else{
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE username = ?";
         
@@ -120,11 +125,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery.subtle-slideshow.js"></script>
+    <link rel="stylesheet" href="subtle-slideshow.css">
+    <style>
+      .static-content {
+        padding: 20px;
+      }
+    </style>
 </head>
 <body>
+
+<div class="login_container">
+    <div id="slides">
+      <a class="slide">
+        <span class="animate down" style="background-image: url(images/bg/bg_04.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate in" style="background-image: url(images/bg/bg_10.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate down" style="background-image: url(images/bg/bg_12.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate out" style="background-image: url(images/bg/bg_14.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate right" style="background-image: url(images/bg/bg_15.jpg)"></span>
+      </a>
+    </div>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/the-world-wallpaper-preview.jpg');">
+	
 			<div class="wrap-login100 p-t-190 p-b-30">
 				<form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 					<span class="login100-form-title p-t-20 p-b-45">
@@ -132,7 +165,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" value="<?php echo $username; ?>" type="text" name="username" placeholder="Username"  value="<?php echo $username; ?>">
+						<input class="input100" type="text" name="username" placeholder="Username"  value="<?php echo $username; ?>">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
@@ -173,13 +206,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</button>
 					</div>
 
-					<div class="text-center w-full p-t-25 p-b-230">
-						<a class="txt1">
+					<div class="text_view text-center w-full p-t-25 p-b-230">
+						<a class="txt1" href="#">
                         your very know personalized map choice!
 						</a>
 					</div>
 
-					<div class="text-center w-full">
+					<div class="text_view text-center w-full">
 						<a class="txt1" href="login.php">
 							already have a account! Login
 							<i class="fa fa-long-arrow-right"></i>						
@@ -191,6 +224,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 	
 	
+</div>
+
+
+<script>
+  // These are te default settings.
+  $('#slides').slideshow({
+    randomize: true,      // Randomize the play order of the slides.
+    slideDuration: 6000,  // Duration of each induvidual slide.
+    fadeDuration: 1000,    // Duration of the fading transition. Should be shorter than slideDuration.
+    animate: true,        // Turn css animations on or off.
+    pauseOnTabBlur: true, // Pause the slideshow when the tab is out of focus. This prevents glitches with setTimeout().
+    enableLog: false      // Enable log messages to the console. Useful for debugging.
+  });
+</script>
 
 	
 <!--===============================================================================================-->	

@@ -112,11 +112,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery.subtle-slideshow.js"></script>
+    <link rel="stylesheet" href="subtle-slideshow.css">
+    <style>
+      .static-content {
+        padding: 20px;
+      }
+    </style>
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/the-world-wallpaper-preview.jpg');">
+<div class="login_container">
+    <div id="slides">
+      <a class="slide">
+        <span class="animate down" style="background-image: url(images/bg/bg_04.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate in" style="background-image: url(images/bg/bg_10.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate down" style="background-image: url(images/bg/bg_12.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate out" style="background-image: url(images/bg/bg_14.jpg)"></span>
+      </a>
+      <a class="slide">
+        <span class="animate right" style="background-image: url(images/bg/bg_15.jpg)"></span>
+      </a>
+    </div>
+
+    <div class="limiter">
 			<div class="wrap-login100 p-t-190 p-b-30">
 				<form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method='post'>
 
@@ -140,11 +165,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</span>
 					</div>
 
-                    <?php 
-                    if(!empty($login_err)){
-                        echo '<div class="Loginerror alert alert-danger ">' . $login_err . '</div>';
-                    }        
-                    ?>
+          <?php 
+          if(!empty($login_err)){
+              echo '<div class="Loginerror alert alert-danger ">' . $login_err . '</div>';
+          }        
+          ?>
 
 					<div class="container-login100-form-btn p-t-10">
 						<button class="login100-form-btn">
@@ -152,26 +177,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</button>
 					</div>
 
-					<div class="text-center w-full p-t-25 p-b-230">
+					<div class="text_view text-center w-full p-t-25 p-b-230">
                     <a class="txt1" href="register.php">
 							Create new account
 							<i class="fa fa-long-arrow-right"></i>						
 						</a>
-					</div>
-
-					<!-- <div class="text-center w-full">
-						<a class="txt1" href="register.php">
-							Create new account
-							<i class="fa fa-long-arrow-right"></i>						
-						</a>
-					</div> -->
+          </div>
+            
+					</div>	
 				</form>
 			</div>
-		</div>
+		
 	</div>
-	
-	
 
+</div>
+
+
+    <script>
+      // These are te default settings.
+      $('#slides').slideshow({
+        randomize: true,      // Randomize the play order of the slides.
+        slideDuration: 6000,  // Duration of each induvidual slide.
+        fadeDuration: 1000,    // Duration of the fading transition. Should be shorter than slideDuration.
+        animate: true,        // Turn css animations on or off.
+        pauseOnTabBlur: true, // Pause the slideshow when the tab is out of focus. This prevents glitches with setTimeout().
+        enableLog: false      // Enable log messages to the console. Useful for debugging.
+      });
+    </script>
 	
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

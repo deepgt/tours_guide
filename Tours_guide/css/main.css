@@ -132,7 +132,7 @@ iframe {
 .txt1 {
   font-family: Montserrat-Regular;
   font-size: 16px;
-  color: #cccccc;
+  color: #ffffff;
   line-height: 1.4;
 }
 
@@ -149,7 +149,7 @@ iframe {
 [ login ]*/
 
 .limiter {
-  width: 100%;
+  width: 30%;
   margin: 0 auto;
 }
 
@@ -481,7 +481,7 @@ iframe {
 
   visibility: hidden;
   opacity: 0;
-
+z-index: 5;
   -webkit-transition: opacity 0.4s;
   -o-transition: opacity 0.4s;
   -moz-transition: opacity 0.4s;
@@ -502,22 +502,26 @@ iframe {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 13px;
+  z-index: 5;
 }
 
 .alert-validate:hover:before {
   visibility: visible;
   opacity: 1;
+  z-index: 5;
 }
 
 .Loginerror{
   width: 100%;
   border-radius: 40px;
+  z-index: 5;
 }
 
 @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
     opacity: 1;
+    z-index: 5;
   }
 }
 
@@ -530,4 +534,9 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+
+.text_view{
+  z-index: 5;
 }

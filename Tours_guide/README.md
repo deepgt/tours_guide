@@ -9,5 +9,7 @@
 4. Rename project folder to **Tours_guide**
 5. After making your change, Go to the browser and run this url
  **http://localhost/Tours_guide/homepage.php**
+6. for mail go to the js folder and open popup.js 
+7. in line 16 change it to your gmail(it's the mail which receive's the review commented by user)
 6. Enjoy the website.
  
