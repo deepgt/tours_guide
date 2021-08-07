@@ -434,6 +434,7 @@ function addMarkers() {
             
             /* Add details to the individual listing. */
             var details = listing.appendChild(document.createElement('div'));
+                details.className = "detail";
                 details.innerHTML = prop.description;
                 if (prop.phone) {
                 details.innerHTML += ' &middot; ' + prop.phoneFormatted;

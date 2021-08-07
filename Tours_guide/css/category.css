@@ -104,6 +104,11 @@ body {
     .news-card:hover .news-card__details-wrapper {
       max-height: 20rem;
       opacity: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      -webkit-box-orient: vertical;
     }
     .news-card:hover .news-card__text-wrapper {
       background-color: rgba(0, 0, 0, 0.6);
@@ -151,4 +156,15 @@ body {
 .news-card__read-more:hover i {
       left: 0.5rem;
       color: #f1faee;
+    }
+
+
+  .news-card__details-wrapper {
+      max-height: 20rem;
+      opacity: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      -webkit-box-orient: vertical;
     }

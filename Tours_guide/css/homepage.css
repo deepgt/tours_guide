@@ -140,9 +140,11 @@ a:hover {
 .listings .item.active .title,
 .listings .item .title:hover {
     color: #457b9d;
+    
 }
 .listings .item.active {
     background-color: #f8f8f8;
+    
 }
 ::-webkit-scrollbar {
     width: 3px;
@@ -213,6 +215,11 @@ a:hover {
     padding: 10px 10px 10px 10px;
     font-weight: 400;
     font-size: 15px;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 4; /* number of lines to show */
+   -webkit-box-orient: vertical;
 }
 
 .mapboxgl-popup-content div {
@@ -523,4 +530,13 @@ a:hover {
   /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
+  }
+
+
+  .detail{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
