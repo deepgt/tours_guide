@@ -55,6 +55,7 @@ $id = $_GET["myid"];
 	var lng=[]; 
 	var categoryid = <?php getid() ?>;
   var id = [];
+  var subcategorys = <?php getSubCategory()?>;
  	window.onload = function() {
 		var subcategory = <?php getSubCategory()?>;
 		var title = document.getElementsByClassName("news-card__title");
@@ -68,8 +69,8 @@ $id = $_GET["myid"];
 			lat[i] = subcategory[i][1];
 			lng[i] = subcategory[i][2];
 			image[i].src = subcategory[i][5];
-			}
-		}
+    }
+  }
 
 </script>
 
@@ -86,13 +87,9 @@ $id = $_GET["myid"];
           <div class="news-card__details-wrapper">
             <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
           </div>
-          <!-- <a href="homepage.php"
-            onclick="location.href=this.href+'?lat='+lat[<?= $x?>]+'&lng='+lng[<?= $x?>]+'&categoryid='+categoryid;return false;">
-            <button> show details</button>
-          </a> -->
-          <a href="detail.php?id=<?= $x+1 ?>">
-            
-            <button> show details</button>
+          <a class="btn btn-white btn-animation-1" href="detail.php"
+          onclick="location.href=this.href+'?id='+subcategorys[<?= $x ?>][0];return false;">
+            show details
           </a>
       </div>
 

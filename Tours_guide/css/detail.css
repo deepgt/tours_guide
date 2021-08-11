@@ -9,9 +9,6 @@
     width: 100%;
 }
 
-.text_body_container{
-    height: 100vh;
-}
 .detail_slide{
     background-color: #0f2525;
     width: 100%;
@@ -21,4 +18,9 @@
 }
 .showmapbutton{
     margin-left: 23%; 
+}
+
+.text_body_container {
+    height: auto;
+    width: 80%;
 }

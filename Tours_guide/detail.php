@@ -58,12 +58,12 @@ include 'locations_model.php';
             <h3>location : <?= $rows[0]["name"] ?></h3>
             <p>description : <?= $rows[0]["description"] ?></p>
             <p>lat : <?= $rows[0]["lat"] ?></p>
-            <p>lng : <?= $rows[0]["lng"] ?></p>
+            <p>log : <?= $rows[0]["lng"] ?></p>
             </div>
     </div>
     <div class="showmapbutton">
-        <a href="homepage.php?lat=<?= $rows[0]["lat"] ?>&lng=<?= $rows[0]["lng"] ?>&categoryid=<?= $rows[0]["categoryid"] ?>">
-        <button>show on map</button>
+        <a class="btn btn-white btn-animation-1" href="homepage.php?lat=<?= $rows[0]["lat"] ?>&lng=<?= $rows[0]["lng"] ?>&categoryid=<?= $rows[0]["categoryid"] ?>">
+        show on map
         </a>
     </div>
 </div>
